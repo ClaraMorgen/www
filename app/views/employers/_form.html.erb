@@ -1,0 +1,14 @@
+<%= simple_form_for(employer) do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :email %>
+  <%= f.input :phone_number %>
+  <%= f.input :company %>
+  <%= f.input :website, as: :url, label: "Company Website" %>
+  <%= f.input :targets, collection: JOB_TITLES, as: :check_boxes, label: "What are you looking for?", include_hidden: false %>
+  <%= f.input :locations, collection: cities_collection, as: :check_boxes, label: "In which city(ies) would you like to meet our community ?", include_hidden: false %>
+  <%= f.input :message, as: :text, label: "Why do you want to recruit Le Wagon's alumni?", include_hidden: false %>
+  <%= f.submit :send %>
+<% end %>
+
+
