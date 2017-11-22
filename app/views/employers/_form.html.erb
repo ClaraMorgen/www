@@ -1,14 +1,33 @@
-<%= simple_form_for(employer) do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :email %>
-  <%= f.input :phone_number %>
-  <%= f.input :company %>
-  <%= f.input :website, as: :url, label: "Company Website" %>
-  <%= f.input :targets, collection: JOB_TITLES, as: :check_boxes, label: "What are you looking for?", include_hidden: false %>
-  <%= f.input :locations, collection: cities_collection, as: :check_boxes, label: "In which city(ies) would you like to meet our community ?", include_hidden: false %>
-  <%= f.input :message, as: :text, label: "Why do you want to recruit Le Wagon's alumni?", include_hidden: false %>
-  <%= f.submit :send %>
-<% end %>
+<div class="employer-form-body">
+  <div class="banner-employer-wrapper">
+    <div class="banner-employer banner banner-top banner-gradient text-center is-active" style="background-image:url('/assets/banners/banner-employers.jpg');">
+      <div class="banner-gradient-shadow"></div>
+      <div class="banner-content">
+        <h1 class="glitch">
+          <span>Join our </span>
+          <span class="underlined">Hiring Network</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="employer-form-rows-container">
+    <%= simple_form_for(employer) do |f| %>
+      <%= f.input :first_name, wrapper_html: { class: 'employer-form-row' }, placeholder: 'Alan', label: "<i class='mdi mdi-account'></i><span>First Name</span>".html_safe %>
+      <%= f.input :last_name, wrapper_html: { class: 'employer-form-row' }, placeholder: 'Turing', label: "<i class='mdi mdi-format-text'></i><span>Last Name</span>".html_safe  %>
+      <%= f.input :email, wrapper_html: { class: 'employer-form-row' }, placeholder: 'alan@turing.com', label: "<i class='mdi mdi-email-open'></i><span>Email</span>".html_safe %>
+      <%= f.input :phone_number, wrapper_html: { class: 'employer-form-row' }, placeholder: '+33612345678', label: "<i class='mdi mdi-cellphone-iphone'></i><span>Phone Number</span>".html_safe %>
+      <%= f.input :company, wrapper_html: { class: 'employer-form-row' }, placeholder: 'E Corp.', label: "<i class='mdi mdi-domain'></i><span>Company</span>".html_safe %>
+      <%= f.input :website, as: :url, label: "Company Website", wrapper_html: { class: 'employer-form-row' }, placeholder: 'https://www.e-corp-online.com/', label: "<i class='mdi mdi-web'></i><span>Website</span>".html_safe %>
+      <%= f.input :targets, collection: JOB_TITLES, as: :check_boxes, label: "<i class='mdi mdi-account-search'></i><span>What are you looking for?</span>".html_safe, include_hidden: false, wrapper_html: { class: 'employer-form-row-custom', id: "job-titles-select" }, collection_wrapper_tag: :div, collection_wrapper_class: "checkbox-list"%>
+      <%= f.input :locations, collection: cities_collection, as: :check_boxes, label: "<i class='mdi mdi-map-marker'></i><span>In which city(ies) would you like to meet our community ?</span>".html_safe, include_hidden: false, wrapper_html: { class: 'employer-form-row-custom', id: "cities-select" }, input_html: { class: 'special' }, collection_wrapper_tag: :div, collection_wrapper_class: "checkbox-list", collection_wrapper_id: "cities-select" %>
+      <%= f.input :message, as: :text, label: "<i class='mdi mdi-content-paste'></i><span>Why do you want to recruit Le Wagon's alumni?</span>".html_safe, include_hidden: false, wrapper_html: { class: 'employer-form-row-custom' } %>
+      <div class="employer-form-row-submit">
+        <%= f.submit "Join our Hiring Network", class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
 
 

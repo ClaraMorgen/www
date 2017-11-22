@@ -1,0 +1,293 @@
+.employer-form-body {
+  flex: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+  .form-group {
+    margin-bottom: 0px;
+  }
+}
+.employer-form-row {
+  // HORIZONTAL LAYOUT
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 30px 20px;
+  transition: transform .3s ease;
+  border-left: 0px solid black;
+  transition: .3s ease border-left;
+
+  textarea {
+    margin-bottom: 10px;
+  }
+
+  &.is-mandatory {
+    label span::after {
+      content: "*";
+      font-size: 13px;
+      margin-left: 3px;
+      vertical-align: top;
+    }
+  }
+
+  &.is-validated, &.has-error {
+    border-left-width: 8px;
+    border-left-style: solid;
+
+    animation: 4s ease alternate-reverse infinite;
+  }
+
+  &.has-error {
+    border-left-color: $red;
+    .form-control {
+      border-color: none;
+      box-shadow: none;
+    }
+    input:focus {
+      border: none;
+      outline: 0;
+      background-color: transparent;
+      box-shadow: none;
+    }
+    @media (min-width: $screen-md-min) {
+      .help-block {
+        width: 100%;
+        margin-left: 212px;
+      }
+    }
+  }
+
+  &.is-validated {
+    border-left-color: rgb(44, 193, 107);
+  }
+
+  .error {
+    color: $red;
+    display: block;
+    margin-left: 200px;
+    margin-top: 1em;
+    width: 100%;
+    @media(max-width: $screen-sm-max) {
+      margin-left: 0;
+      text-align: center;
+    }
+    a {
+      text-decoration: underline;
+      &:hover {
+        color: $red;
+      }
+    }
+  }
+
+
+  @media (max-width: $screen-md) {
+    align-items: center;
+  }
+  abbr {
+    display: none;
+  }
+  .errors {
+    display: flex;
+    flex-flow: column;
+    color: $red;
+    padding-left: 20px;
+    text-align: right;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+  label {
+    flex: 0 0 200px;
+    color: darkgrey;
+    // align-self: flex-start;
+    margin: 0;
+    @media (max-width: $screen-sm) {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    i {
+      margin-right: 10px;
+    }
+    i.fa {
+      vertical-align: 1px;
+    }
+  }
+
+  input {
+    flex: 1;
+    border: none;
+    outline: 0;
+    background-color: transparent;
+    box-shadow: none;
+
+    @media (max-width: $screen-sm) {
+      flex: 0 0 100%;
+      text-align: center;
+    }
+    &:focus {
+      border: none;
+      outline: 0;
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  input::-webkit-input-placeholder { opacity: 0.3; font-style: italic; }
+  input::-moz-placeholder { opacity: 0.3; font-style: italic; }
+  textarea::-webkit-input-placeholder { opacity: 0.3; font-style: italic; }
+  textarea::-moz-placeholder { opacity: 0.3; font-style: italic; }
+  input:focus::-webkit-input-placeholder { color: transparent; }
+  input:focus::-moz-placeholder { color: transparent; }
+  textarea:focus::-webkit-input-placeholder { color: transparent; }
+  textarea:focus::-moz-placeholder { color: transparent; }
+
+  textarea {
+    flex: 4 1 auto;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+    border: 1px solid #ccc;
+    resize: none;
+    height: 150px;
+    padding: 10px;
+    outline: 0;
+    border-radius: 4px;
+    &:focus {
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.17);
+      border: 1px solid #9C9C9C;
+    }
+  }
+}
+
+.employer-form-row-custom {
+  // VERTICAL LAYOUT
+  @extend .employer-form-row;
+  flex-direction: column;
+  justify-content: flex-start;
+  // align-items: flex-start;
+  align-items: stretch;
+
+  label {
+    flex: 0 0 auto;
+  }
+  .checkbox-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 15px;
+    .checkbox {
+      word-break: break-all;
+      white-space: pre-wrap;
+      &:first-child {
+        margin-top: 0;
+      }
+      margin-bottom: 10px;
+      margin-right: 20px;
+    }
+  }
+
+  textarea {
+    margin-top: 15px;
+  }
+
+  &.has-error {
+    @media (min-width: $screen-md-min) {
+      .help-block {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  #job-titles-select > .checkbox-list {
+    height: 100px;
+  }
+  #cities-select > .checkbox-list {
+    height: 300px;
+  }
+}
+
+.employer-form-rows-container {
+  background: white;
+}
+
+
+.banner-city-container {
+  display: flex;
+  padding-bottom: 50px;
+  @media (max-width: $screen-md) {
+    flex-flow: column;
+  }
+}
+
+.banner-employer {
+  flex: 1;
+  height: 200px;
+  display: none;
+  border-radius: 0;
+  background-position: center 40%;
+
+  h1 span { animation: inherit }
+
+
+  h1 {
+    margin: 0;
+  }
+
+  &.is-active {
+    display: flex;
+
+    .underlined {
+      animation: boxShadow .3s 1s ease forwards;
+    }
+  }
+  .banner-gradient-shadow {
+    background-image: linear-gradient(-225deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 60%);
+  }
+}
+
+.employer-form-row-submit {
+  display: flex;
+  padding: 20px;
+
+  @media (max-width: $screen-md) {
+    flex-flow: column;
+    text-align: center;
+  }
+
+  input {
+    flex: inherit;
+    color: white;
+    background-color: #D23333;
+    padding: 12px 25px;
+    margin-left: auto;
+    outline: 0 !important;
+
+    &:hover {
+      color: white;
+      background: darken(#D23333, 5%)
+    }
+
+    &:focus {
+      color: white;
+      transform: scale(0.99);
+    }
+
+    @media (max-width: $screen-md) {
+      margin: auto;
+    }
+  }
+}
+
+
+
+@keyframes boxShadow {
+  0% {
+    box-shadow: inset 0px 0 #D23333;
+  }
+  100% {
+    box-shadow: inset 0px -18px #D23333;
+  }
+}
+

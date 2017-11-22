@@ -10,7 +10,7 @@
     <p>
       <%= t(".hiring_sub_tagline_html", default: "Recruitment is a <strong>long-term relationship</strong>. Connect to our alumni through regular events, <br>job board and great workshops to promote your company's culture.") %>
     </p>
-    <a class="typeform-share button btn btn-danger" href="https://lewagon.typeform.com/to/bKCXIw" data-mode="popup" target="_blank" > <%= t('.apply', :default => "Work with Le Wagon's alumni") %> </a>
+    <a class="button btn btn-danger" data-toggle="modal" data-target="#employer-form-modal"> <%= t('.apply', :default => "Work with Le Wagon's alumni") %> </a>
   </div>
 </div>
 
@@ -132,7 +132,7 @@
       </div>
     </div>
     <div class="text-center" style="padding-top: 60px">
-      <a class="typeform-share button btn btn-danger btn-lg employers-apply" href="https://lewagon.typeform.com/to/bKCXIw" data-mode="popup" target="_blank" style="padding: 20px 25px;font-size: 20px" > <%= t('.apply', :default => "Work with Le Wagon's alumni") %> </a>
+      <a class="button btn btn-danger btn-lg employers-apply" data-toggle="modal" data-target="#employer-form-modal" style="padding: 20px 25px;font-size: 20px"> <%= t('.apply', :default => "Work with Le Wagon's alumni") %> </a>
     </div>
   </div>
 </div>
@@ -149,10 +149,16 @@
     <div>
       <h3 style="font-size: 40px;"><%= t ".wanna_join" %></h3>
       <p style="margin-bottom: 10px;font-size: 23px"><%= t ".signup" %></p>
-      <a class="typeform-share button btn btn-danger btn-lg employers-apply" href="https://lewagon.typeform.com/to/bKCXIw" data-mode="popup" target="_blank" style="padding: 20px 25px;font-size: 20px" > <%= t('.apply', :default => "Work with Le Wagon's alumni") %> </a>
+      <a class="button btn btn-danger btn-lg employers-apply" data-toggle="modal" data-target="#employer-form-modal" style="padding: 20px 25px;font-size: 20px"> <%= t('.apply', :default => "Work with Le Wagon's alumni") %> </a>
     </div>
   </div>
 </div>
 
-
-<script> (function() { var qs, js, q, s, d = document, gi = d.getElementById, ce = d.createElement, gt = d.getElementsByTagName, id = "typef_orm_share", b = "https://s3-eu-west-1.amazonaws.com/share.typeform.com/"; if (!gi.call(d, id)) { js = ce.call(d, "script"); js.id = id; js.src = b + "share.js"; q = gt.call(d, "script")[0]; q.parentNode.insertBefore(js, q) } })() </script>
+<!-- Employer Form Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="employer-form-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= render "employers/form", employer: @employer %>
+    </div>
+  </div>
+</div>

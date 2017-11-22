@@ -1,15 +1,11 @@
 class EmployersController < ApplicationController
-  def new
-    @employer = Employer.new
-  end
 
   def create
     @employer = Employer.from_hash(params[:employer])
-
     respond_to do |format|
       if @employer.valid?
         notify_slack(@employer)
-        flash[:notice] = 'Employer was successfully created.'
+        flash[:notice] = "Thank you for joining Le Wagon's network."
         format.html { redirect_to employers_path }
       else
         format.html { render :action => "new" }
@@ -22,8 +18,7 @@ class EmployersController < ApplicationController
   def notify_slack(employer)
     text = format_text_message(employer)
     NotifySlack.perform_later(
-      # "channel": Rails.env.development? ? "test" : "incoming",
-      "channel": Rails.env.development? ? "test" : "incoming",
+      "channel": Rails.env.development? ? "test" : "hiring",
       "username": "www",
       "icon_url": "https://raw.githubusercontent.com/lewagon/mooc-images/master/slack_bot.png",
       "text": text
