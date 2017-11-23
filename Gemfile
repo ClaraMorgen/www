@@ -96,4 +96,5 @@ group :test do
   gem 'capybara'
   gem 'capybara-selenium'
   gem 'chromedriver-helper'
+  gem 'rspec-sidekiq'
 end

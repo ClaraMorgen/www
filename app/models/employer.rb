@@ -14,4 +14,13 @@ class Employer < Struct.new(:first_name, :last_name, :email, :phone_number, :com
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def to_slack_message
+"*Person:* #{full_name} - #{email} - #{phone_number}
+*Company:* #{company}
+*Company Website:* #{website}
+*Why:* #{message}
+*Which city:* #{self.locations.reject { |l| l.empty? }.join(", ")}
+*Looking for:* #{self.targets.reject { |l| l.empty? }.join(", ")}"
+  end
 end
