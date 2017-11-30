@@ -395,7 +395,7 @@ es:
         project_link: "Ver proyecto"
         techno: "Creado con"
         cta: "¡Solicita ahora!"
-      batch_title: " changemakers de la Promoción #%{batch_slug} "
+      batch_title: " changemakers"
   students:
     index:
       meta_title: "Opiniones sobre Le Wagon y casos de éxito bootcamp de programación | Le Wagon Alumni"
